@@ -1,0 +1,104 @@
+{% extends "./base.html" %}
+
+{% block title %}Contacto - Biodiversidad{% endblock %}
+
+{% block body %}
+<section id="contacto">
+    <h2>Formulario de Contacto</h2>
+
+    <form action="" id="contacto-form" method="post">
+        <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required />
+        </div>
+
+        <div class="campo">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos" required />
+        </div>
+
+        <div class="campo">
+            <label for="num_identificacion">Cedula:</label>
+            <input type="number" name="num_identificacion" id="num_identificacion" required min="0" />
+        </div>
+
+        <div class="campo">
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" required min="0" />
+        </div>
+
+        <div class="campo">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+        </div>
+
+        <div class="campo">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" name="telefono" id="telefono" required />
+        </div>
+
+        <div class="campo">
+            <label for="mensaje">Mensaje:</label>
+            <textarea name="mensaje" id="mensaje" required></textarea>
+        </div>
+
+        <input type="submit" value="Enviar" />
+    </form>
+
+    <!-- Tabla para mostrar datos registrados -->
+    <h2>Datos Registrados</h2>
+    <div id="contenido">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Cédula</th>
+                    <th>Edad</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in df.itertuples() %}
+                <tr>
+                    <td>{{ row.Nombre }}</td>
+                    <td>{{ row.Apellidos }}</td>
+                    <td>{{ row.Cedula }}</td>
+                    <td>{{ row.Edad }}</td>
+                    <td>{{ row.Email }}</td>
+                    <td>{{ row.Telefono }}</td>
+                    <td>{{ row.Mensaje }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Botones adicionales -->
+    <button onclick="aplicarEstilos()">Aplicar Estilos</button>
+    <button onclick="corregirTabla()">Corregir Datos</button>
+    <button onclick="limpiarTabla()">Limpiar Tabla</button>
+    <input type="text" id="caracteresBuscar" placeholder="Caracteres a buscar">
+    <button onclick="dejarUltimaPalabra()">Dejar Última Palabra</button>
+
+    <!-- Formulario para exportar datos -->
+    <form action="{{ url_for('exportar') }}" method="post">
+        <input type="hidden" id="tabla-datos" name="tabla-datos">
+        <button type="button" onclick="enviarDatos()">Exportar Datos</button>
+    </form>
+
+    <!-- Formulario para agregar usuario -->
+    <form action="/agregar_usuario" method="post">
+        <button type="submit">Agregar Usuario</button>
+    </form>
+
+    <!-- Formulario para eliminar usuario por ID -->
+    <form action="/eliminar_usuario" method="post">
+        <label for="id">ID del Usuario a Eliminar:</label>
+        <input type="number" name="id" id="id" required min="0">
+        <button type="submit">Eliminar Usuario</button>
+    </form>
+</section>
+{% endblock %}

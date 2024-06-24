@@ -1,0 +1,43 @@
+{% extends "./base.html" %}
+
+{% block title %}Agregar Usuario - Biodiversidad{% endblock %}
+
+{% block body %}
+<section id="agregar">
+    <h2>Agregar Usuario</h2>
+
+    <form action="/agregar" id="agregar" method="post">
+        <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required />
+        </div>
+        <div class="campo">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos" required />
+        </div>
+
+        <div class="campo">
+            <label for="num_identificacion">cedula:</label>
+            <input type="number" name="num_identificacion" id="num_identificacion" required min="0" />
+        </div>
+        <div class="campo">
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" required min="0" />
+        </div>
+        <div class="campo">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+        </div>
+        <div class="campo">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" name="telefono" id="telefono" required />
+        </div>
+        <div class="campo">
+            <label for="mensaje">Mensaje:</label>
+            <textarea name="mensaje" id="mensaje" required></textarea>
+        </div>
+
+        <input type="submit" value="Agregar" />
+    </form>
+</section>
+{% endblock %}

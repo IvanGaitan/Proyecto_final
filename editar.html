@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Usuario - Biodiversidad{% endblock %}
+
+{% block body %}
+<section id="editar">
+    <h2>Editar Usuario</h2>
+
+    <form method="POST" action="{{ url_for('update_routes.editar', id=id) }}">
+        <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value="{{ usuario['Nombre'] }}" required />
+        </div>
+        <div class="campo">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos" value="{{ usuario['Apellidos'] }}" required />
+        </div>
+        <div class="campo">
+            <label for="num_identificacion">Cedula:</label>
+            <input type="number" name="num_identificacion" id="num_identificacion" value="{{ usuario['Cedula'] }}" required />
+        </div>
+        <div class="campo">
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" value="{{ usuario['Edad'] }}" required min="0" />
+        </div>
+        <div class="campo">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ usuario['Email'] }}" required />
+        </div>
+        <div class="campo">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" name="telefono" id="telefono" value="{{ usuario['Telefono'] }}" required />
+        </div>
+        <div class="campo">
+            <label for="mensaje">Mensaje:</label>
+            <textarea name="mensaje" id="mensaje" required>{{ usuario['Mensaje'] }}</textarea>
+        </div>
+
+        <input type="submit" value="Actualizar" />
+    </form>
+</section>
+{% endblock %}

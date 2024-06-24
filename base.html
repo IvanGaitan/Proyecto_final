@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Biodiversidad de Soacha Cundinamarca{% endblock %}</title>
+    <link rel="stylesheet" href="/static/CSS/estilos.css">
+</head>
+<body>
+    <header>
+        <img src="El_salto.jpg" alt="">
+        <h1>{% block header %}Biodiversidad de Soacha Cundinamarca{% endblock %}</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="/soacha">Inicio</a></li>
+                <li><a href="#ecosistema">Ecosistema</a></li>
+                <li><a href="/galeria">Galería</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/visualizacion">Visualización</a></li>
+            
+
+            </ul>
+        </nav>
+    </header>
+
+    
+  
+
+    <main>
+        {% block body %}
+       
+        
+        {% endblock %}
+    </main>
+
+   
+
+    <footer>
+        <p>&copy; 2024 Biodiversidad en Soacha Cundinamarca</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

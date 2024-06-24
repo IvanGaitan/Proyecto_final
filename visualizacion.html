@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+
+{% block title %}Visualización de Datos - Biodiversidad{% endblock %}
+
+{% block body %}
+
+<section id="visualizacion">
+    <h2>Visualización de Datos</h2>
+
+    <!-- Gráfico de distribución de edades -->
+    <h3>Distribución de Edades</h3>
+    <div>
+        <img src="data:image/png;base64,{{ plot_url1 }}" alt="Distribución de Edades">
+    </div>
+
+    <!-- Gráfico de categorización de edades -->
+    <h3>Categorización de Edades</h3>
+    <div>
+        <img src="data:image/png;base64,{{ plot_url2 }}" alt="Categorización de Edades">
+    </div>
+
+    <!-- Botón para actualizar datos -->
+    <form action="/actualizar" method="post">
+        <button type="submit">Actualizar Datos</button>
+    </form>
+</section>
+{% endblock %}
